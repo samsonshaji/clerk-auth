@@ -8,8 +8,6 @@ export default function Example() {
     setDomainName(event.target.value);
   };
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const companyName = domainName.split(".")[0];

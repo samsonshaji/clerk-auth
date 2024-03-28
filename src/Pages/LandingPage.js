@@ -1,9 +1,9 @@
 import { UserButton } from '@clerk/clerk-react';
 import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
-    let navigate = useNavigate(); // This hook gives you access to the history instance that you may use to navigate.
+    const navigate = useNavigate(); // This hook gives you access to the history instance that you may use to navigate.
 
     const goToSignUp = () => {
         navigate('/sign-up'); // Use history.push() to navigate to the desired path.
