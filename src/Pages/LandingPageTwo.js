@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LogInModal from "../Modals/LogInModal.js";
+import SignUpModal from "../Modals/SignUpModal.js";
 
 function LandingPageTwo() {
 
@@ -8,6 +9,7 @@ function LandingPageTwo() {
 	// if they are, redirect them to /report/${companyname}
 
 	const [openLogInModal, setOpenLogInModal] = useState(false);
+	const [openSignUpModal, setOpenSignUpModal] = useState(false);
 
 	return (
 		<div>
@@ -20,13 +22,14 @@ function LandingPageTwo() {
 				</div>
 
 				<div className="m-2 p-1 text-center">
-					<button className="rounded-s-md rounded-e-md bg-gray-900 p-3 text-md font-semibold text-white shadow-md hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full transition-all duration-100">
+					<button onClick = {() => setOpenSignUpModal(prev => !prev)} className="rounded-s-md rounded-e-md bg-gray-900 p-3 text-md font-semibold text-white shadow-md hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full transition-all duration-100">
 						Create an Account
 					</button>
 				</div>
 			</div>
 		</div>
 		<LogInModal open = {openLogInModal} setOpen = {setOpenLogInModal}/>
+		<SignUpModal open = {openSignUpModal} setOpen = {setOpenSignUpModal} />
 		</div>
 	);
 }
