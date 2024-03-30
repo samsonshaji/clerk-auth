@@ -4,7 +4,38 @@ import { useSignUp } from "@clerk/clerk-react";
 
 export default function SignUpModal({ open, setOpen }) {
 
-    const { isLoading, signUp } = useSignUp();
+	const  { isLoading, signUp } = useSignUp();
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		const email = event.target['email'].value;
+		const domain = event.target['domain'].value;
+		const password = event.target['password'].value
+		const confirmPassword = event.target['confirm'].value;
+
+		/*
+			TODO :
+				Add validation checking on email, domain, password, confirmPassword
+				- valid requirements on email (@ included, real service provider, valid extention)
+				- valid requirements on domain
+				- passwords must match
+				- requirements on passwords -- (number, special character, etc.)
+
+				Add UI to indicate to User what is missing or incomplete or wrong
+		*/
+		try {
+			await signUp.create({
+				emailAddress : email,
+				password : password,
+			})
+
+			console.log(signUp.status);
+		} catch (error) {
+			console.error(error);
+		}
+
+
+	}
 
 	return (
 		<Transition.Root show={open} as={Fragment}>
@@ -44,11 +75,7 @@ export default function SignUpModal({ open, setOpen }) {
 									</div>
 								</div>
 								<form
-									onSubmit={(e) => {
-										e.preventDefault();
-										console.log(e.target['password'].value);
-                                        console.dir(signUp);
-									}}
+									onSubmit={handleSubmit}
 									id="inputFields"
 									className="my-2 py-2"
 								>
@@ -93,6 +120,7 @@ export default function SignUpModal({ open, setOpen }) {
 										<button
 											type="submit"
 											className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+											disabled={isLoading}
 										>
 											Login
 										</button>

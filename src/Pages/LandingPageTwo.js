@@ -27,6 +27,9 @@ function LandingPageTwo() {
 					</button>
 				</div>
 			</div>
+			<div className="m-2">
+				<p>Status: </p>
+			</div>
 		</div>
 		<LogInModal open = {openLogInModal} setOpen = {setOpenLogInModal}/>
 		<SignUpModal open = {openSignUpModal} setOpen = {setOpenSignUpModal} />

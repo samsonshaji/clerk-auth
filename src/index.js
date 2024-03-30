@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import {
@@ -99,17 +98,17 @@ const ClerkWithRoutes = () => {
 function LogUserId({ setCompanyName }) {
 	const { isLoaded, userId, orgId } = useAuth();
 
-	React.useEffect(() => {
-		if (isLoaded) {
-			console.log("User ID:", userId);
-			const companyName = findCompanyNameByUserId(userId);
-			// console.log("Company ID from clerk:", orgId);
-			console.log("Company Name:", companyName);
-			if (companyName) {
-				setCompanyName(companyName);
-			}
-		}
-	}, [isLoaded, userId, setCompanyName]);
+	// React.useEffect(() => {
+	// 	if (isLoaded) {
+	// 		console.log("User ID:", userId);
+	// 		const companyName = findCompanyNameByUserId(userId);
+	// 		// console.log("Company ID from clerk:", orgId);
+	// 		console.log("Company Name:", companyName);
+	// 		if (companyName) {
+	// 			setCompanyName(companyName);
+	// 		}
+	// 	}
+	// }, [isLoaded, userId, setCompanyName]);
 
 	return null;
 }
